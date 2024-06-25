@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Stock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+			background-color:#a8a8a8;
+        }
+        .logo {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .form-container {
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-container input {
+			width: 98%;
+            padding: 10px;
+            margin-bottom: 20px;
+		}
+		
+		.form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="Logo.jpg" alt="Store Logo" width="300" height="300"/>
+        </div>
+		
+		 <button class="back-button" onclick="location.href='store.html'">Back to Main Page</button>
+
+        <div class="form-container">
+            <h2>Add Stock</h2>
+            <form id="add-stock-form">
+                <label for="item">Select Item:</label>
+                <select id="item">
+                    <option value="jeans1">Jeans 1</option>
+                    <option value="jeans2">Jeans 2</option>
+                    <option value="jeans3">Jeans 3</option>
+                    <option value="jeans4">Jeans 4</option>
+                    <option value="tshirt1">T-Shirt 1</option>
+                    <option value="tshirt2">T-Shirt 2</option>
+                    <option value="tshirt3">T-Shirt 3</option>
+                    <option value="tshirt4">T-Shirt 4</option>
+					<option value="perfume1">Perfume 1</option>
+                    <option value="perfume2">Perfume 2</option>
+                    <option value="perfume3">Perfume 3</option>
+                    <option value="perfume4">Perfume 4</option>
+					<option value="sando1">Sando 1</option>
+                    <option value="sando2">Sando 2</option>
+                    <option value="sando3">Sando 3</option>
+                    <option value="sando4">Sando 4</option>
+					<option value="toy1">Toy 1</option>
+                    <option value="toy2">Toy 2</option>
+                    <option value="toy3">Toy 3</option>
+                    <option value="toy4">Toy 4</option>
+					
+                </select>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" min="1" required>
+                <button type="submit">Add Stock</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('add-stock-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const item = document.getElementById('item').value;
+            const quantity = parseInt(document.getElementById('quantity').value);
+
+            // Fetch current stock from local storage
+            let stockData = JSON.parse(localStorage.getItem('stockData')) || {};
+
+            // Update the stock
+            stockData[item] = (stockData[item] || 0) + quantity;
+
+            // Save updated stock to local storage
+            localStorage.setItem('stockData', JSON.stringify(stockData));
+
+            alert('Stock added successfully!');
+        });
+    </script>
+</body>
+</html>

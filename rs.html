@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+            background: url('restaurant-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+        }
+        
+        h1 {
+            text-align: center;
+            background-color: darkred;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        th, td {
+            border: 1px solid darkred;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        
+        th {
+            background-color: #581845;
+            color: white;
+            font-weight: bold;
+        }
+        
+        td img {
+            border-radius: 10px;
+            max-width: 100px;
+            height: auto;
+        }
+        
+        input[type="number"] {
+            width: 60px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        
+        .back-button, .nav-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+		.nav-button{
+			background-color: darkred;
+		}
+        
+        .back-button:hover, .nav-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        
+        .total-row {
+            background-color: darkred;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .nav-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+        
+        function calculateTotal() {
+            var MenudoPrice = 90;
+            var Kare_KarePrice = 60;
+            var PorkSisigPrice = 50;
+            var AdoboPrice = 50;
+            var SinigangPrice = 60;
+
+            var GinataangKalabasaPrice = 30;
+            var AdobongSitawPrice = 50;
+            var PakbetPrice = 60;
+
+            var Halo_HaloPrice = 150;
+            var lechePlanPrice = 40;
+            var IceCreamPrice = 110;
+
+            var CokePrice = 30;
+            var SpritePrice = 50;
+            var RoyalPrice = 60;
+
+            var MilkteaPrice = 150;
+            var CokeFloatPrice = 40;
+            var BurgerPrice = 110;
+
+            var MenudoQuantity = parseInt(document.getElementById('MenudoQuantity').value);
+            var Kare_KareQuantity = parseInt(document.getElementById('Kare_KareQuantity').value);
+            var PorkSisigQuantity = parseInt(document.getElementById('PorkSisigQuantity').value);
+            var AdoboQuantity = parseInt(document.getElementById('AdoboQuantity').value);
+            var SinigangQuantity = parseInt(document.getElementById('SinigangQuantity').value);
+            var GinataangKalabasaQuantity = parseInt(document.getElementById('GinataangKalabasaQuantity').value);
+            var AdobongSitawQuantity = parseInt(document.getElementById('AdobongSitawQuantity').value);
+            var PakbetQuantity = parseInt(document.getElementById('PakbetQuantity').value);
+            var Halo_HaloQuantity = parseInt(document.getElementById('Halo_HaloQuantity').value);
+            var lechePlanQuantity = parseInt(document.getElementById('lechePlanQuantity').value);
+            var IceCreamQuantity = parseInt(document.getElementById('IceCreamQuantity').value);
+            var CokeQuantity = parseInt(document.getElementById('CokeQuantity').value);
+            var SpriteQuantity = parseInt(document.getElementById('SpriteQuantity').value);
+            var RoyalQuantity = parseInt(document.getElementById('RoyalQuantity').value);
+            var MilkteaQuantity = parseInt(document.getElementById('MilkteaQuantity').value);
+            var CokeFloatQuantity = parseInt(document.getElementById('CokeFloatQuantity').value);
+            var BurgerQuantity = parseInt(document.getElementById('BurgerQuantity').value);
+
+            var MenudoTotal = MenudoPrice * MenudoQuantity;
+            var Kare_KareTotal = Kare_KarePrice * Kare_KareQuantity;
+            var PorkSisigTotal = PorkSisigPrice * PorkSisigQuantity;
+            var AdoboTotal = AdoboPrice * AdoboQuantity;
+            var SinigangTotal = SinigangPrice * SinigangQuantity;
+            var GinataangKalabasaTotal = GinataangKalabasaPrice * GinataangKalabasaQuantity;
+            var AdobongSitawTotal = AdobongSitawPrice * AdobongSitawQuantity;
+            var PakbetTotal = PakbetPrice * PakbetQuantity;
+            var Halo_HaloTotal = Halo_HaloPrice * Halo_HaloQuantity;
+            var lechePlanTotal = lechePlanPrice * lechePlanQuantity;
+            var IceCreamTotal = IceCreamPrice * IceCreamQuantity;
+            var CokeTotal = CokePrice * CokeQuantity;
+            var SpriteTotal = SpritePrice * SpriteQuantity;
+            var RoyalTotal = RoyalPrice * RoyalQuantity;
+            var MilkteaTotal = MilkteaPrice * MilkteaQuantity;
+            var CokeFloatTotal = CokeFloatPrice * CokeFloatQuantity;
+            var BurgerTotal = BurgerPrice * BurgerQuantity;
+
+            document.getElementById('MenudoTotal').innerText = MenudoTotal.toFixed(2);
+            document.getElementById('Kare_KareTotal').innerText = Kare_KareTotal.toFixed(2);
+            document.getElementById('PorkSisigTotal').innerText = PorkSisigTotal.toFixed(2);
+            document.getElementById('AdoboTotal').innerText = AdoboTotal.toFixed(2);
+            document.getElementById('SinigangTotal').innerText = SinigangTotal.toFixed(2);
+            document.getElementById('GinataangKalabasaTotal').innerText = GinataangKalabasaTotal.toFixed(2);
+            document.getElementById('AdobongSitawTotal').innerText = AdobongSitawTotal.toFixed(2);
+            document.getElementById('PakbetTotal').innerText = PakbetTotal.toFixed(2);
+            document.getElementById('Halo_HaloTotal').innerText = Halo_HaloTotal.toFixed(2);
+            document.getElementById('lechePlanTotal').innerText = lechePlanTotal.toFixed(2);
+            document.getElementById('IceCreamTotal').innerText = IceCreamTotal.toFixed(2);
+            document.getElementById('CokeTotal').innerText = CokeTotal.toFixed(2);
+            document.getElementById('SpriteTotal').innerText = SpriteTotal.toFixed(2);
+            document.getElementById('RoyalTotal').innerText = RoyalTotal.toFixed(2);
+            document.getElementById('MilkteaTotal').innerText = MilkteaTotal.toFixed(2);
+            document.getElementById('CokeFloatTotal').innerText = CokeFloatTotal.toFixed(2);
+            document.getElementById('BurgerTotal').innerText = BurgerTotal.toFixed(2);
+
+            var totalAmount = MenudoTotal + Kare_KareTotal + PorkSisigTotal + AdoboTotal + SinigangTotal + GinataangKalabasaTotal + AdobongSitawTotal + PakbetTotal + Halo_HaloTotal + lechePlanTotal + IceCreamTotal + CokeTotal + SpriteTotal + RoyalTotal + MilkteaTotal + CokeFloatTotal + BurgerTotal;
+            document.getElementById('totalAmount').innerText = totalAmount.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="goBack()">Go Back</button>
+        
+        
+        
+        <h1>Restaurant Menu</h1>
+		
+		<div class="nav-container">
+            <button class="nav-button" onclick="document.getElementById('main-menu').scrollIntoView();">Main</button>
+            <button class="nav-button" onclick="document.getElementById('vegetable-menu').scrollIntoView();">Vegetable</button>
+            <button class="nav-button" onclick="document.getElementById('dessert-menu').scrollIntoView();">Dessert</button>
+            <button class="nav-button" onclick="document.getElementById('drinks-menu').scrollIntoView();">Drinks</button>
+            <button class="nav-button" onclick="document.getElementById('add-ons-menu').scrollIntoView();">Add-ons</button>
+        </div>
+        
+        <section id="main-menu">
+            <h2>Main Menu</h2>
+            <table>
+                <tr>
+                    <th>Menu Item</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                <!-- Main Menu Items -->
+                <tr>
+                    <td>Menudo</td>
+                    <td><img src="menudo.png" alt="Menudo"></td>
+                    <td>₱90.00</td>
+                    <td><input type="number" id="MenudoQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="MenudoTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Kare-Kare</td>
+                    <td><img src="kare.jpg" alt="Menudo"></td>
+                    <td>₱60.00</td>
+                    <td><input type="number" id="Kare_KareQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="Kare_KareTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Pork Sisig</td>
+                    <td><img src="sisig.jpg" alt="Menudo"></td>
+                    <td>₱50.00</td>
+                    <td><input type="number" id="PorkSisigQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="PorkSisigTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Adobo</td>
+                    <td><img src="adobo.jpg" alt="Menudo"></td>
+                    <td>₱50.00</td>
+                    <td><input type="number" id="AdoboQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="AdoboTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Sinigang</td>
+                    <td><img src="sinigang.jpg" alt="Menudo"></td>
+                    <td>₱60.00</td>
+                    <td><input type="number" id="SinigangQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="SinigangTotal">0.00</td>
+                </tr>
+               
+            </table>
+        </section>
+        
+        <section id="vegetable-menu">
+            <h2>Vegetable Menu</h2>
+            <table>
+                <tr>
+                    <th>Menu Item</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                <!-- Vegetable Menu Items -->
+                <tr>
+                    <td>Ginataang Kalabasa</td>
+                    <td><img src="ginataang.jpg" alt="Ginataang Kalabasa"></td>
+                    <td>₱30.00</td>
+                    <td><input type="number" id="GinataangKalabasaQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="GinataangKalabasaTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Adobong Sitaw</td>
+                    <td><img src="adobongs.jpg" alt="Ginataang Kalabasa"></td>
+                    <td>₱30.00</td>
+                    <td><input type="number" id="AdobongSitawQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="AdobongSitawTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Pakbet</td>
+                    <td><img src="pakbet.jpg" alt="Ginataang Kalabasa"></td>
+                    <td>₱30.00</td>
+                    <td><input type="number" id="PakbetQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="PakbetTotal">0.00</td>
+                </tr>
+              
+            </table>
+        </section>
+        
+        <section id="dessert-menu">
+            <h2>Dessert Menu</h2>
+            <table>
+                <tr>
+                    <th>Menu Item</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                <!-- Dessert Menu Items -->
+                <tr>
+                    <td>Halo-Halo</td>
+                    <td><img src="halo.jpg" alt="Halo-Halo"></td>
+                    <td>₱150.00</td>
+                    <td><input type="number" id="Halo_HaloQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="Halo_HaloTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Leche Plan</td>
+                    <td><img src="leche.jpg" alt="Halo-Halo"></td>
+                    <td>₱150.00</td>
+                    <td><input type="number" id="lechePlanQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="lechePlanTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Ice Cream</td>
+                    <td><img src="icecream.jpg" alt="Halo-Halo"></td>
+                    <td>₱110.00</td>
+                    <td><input type="number" id="IceCreamQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="IceCreamTotal">0.00</td>
+                </tr>
+                
+            </table>
+        </section>
+        
+        <section id="drinks-menu">
+            <h2>Drinks Menu</h2>
+            <table>
+                <tr>
+                    <th>Menu Item</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                <!-- Drinks Menu Items -->
+                <tr>
+                    <td>Coke</td>
+                    <td><img src="coke.jpg" alt="Coke"></td>
+                    <td>₱150.00</td>
+                    <td><input type="number" id="CokeQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="CokeTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Sprite</td>
+                    <td><img src="sprite.jpg" alt="Coke"></td>
+                    <td>₱40.00</td>
+                    <td><input type="number" id="SpriteQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="SpriteTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Royal</td>
+                    <td><img src="royal.jpg" alt="Coke"></td>
+                    <td>₱110.00</td>
+                    <td><input type="number" id="RoyalQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="RoyalTotal">0.00</td>
+                </tr>
+				
+               
+            </table>
+        </section>
+        
+        <section id="add-ons-menu">
+            <h2>Add-ons Menu</h2>
+            <table>
+                <tr>
+                    <th>Menu Item</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                <!-- Add-ons Menu Items -->
+                <tr>
+                    <td>Milktea</td>
+                    <td><img src="milk.jpg" alt="Milktea"></td>
+                    <td>₱150.00</td>
+                    <td><input type="number" id="MilkteaQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="MilkteaTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Coke Float</td>
+                    <td><img src="cokefloat.jpg" alt="Milktea"></td>
+                    <td>₱40.00</td>
+                    <td><input type="number" id="CokeFloatQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="CokeFloatTotal">0.00</td>
+                </tr>
+				<tr>
+                    <td>Burger</td>
+                    <td><img src="burger.jpg" alt="Milktea"></td>
+                    <td>₱110.00</td>
+                    <td><input type="number" id="BurgerQuantity" value="0" min="0" oninput="calculateTotal()"></td>
+                    <td id="BurgerTotal">0.00</td>
+                </tr>
+                
+            </table>
+        </section>
+
+        <h2>Total Amount: ₱<span id="totalAmount">0.00</span></h2>
+    </div>
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+			
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			background-color:#a8a8a8;
+        }
+        .logo {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .nav-buttons button:hover {
+            background-color: #45a049;
+        }
+        .add-stock {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-stock:hover {
+            background-color: #e53935;
+        }
+        .category {
+            margin: 20px 0;
+        }
+        .category h2 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            color: #333;
+        }
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .item {
+            width: 22%;
+            margin: 1.5%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .item:hover {
+            transform: scale(1.05);
+        }
+        .item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .stock-quantity {
+            margin-top: 10px;
+        }
+        .add-to-cart, .place-order {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .add-to-cart:hover, .place-order:hover {
+            background-color: #45a049;
+        }
+        .order-summary {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #a8a8a8;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-summary h2 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            color: #333;
+        }
+        .order-summary p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .discount-select {
+            margin-top: 10px;
+        }
+        .discount-select label {
+            font-size: 16px;
+        }
+        .discount-select select {
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="Logo.jpg" alt="Store Logo" width="300" height="300"/>
+        </div>
+        
+        <div class="nav-buttons">
+            <button onclick="location.href='#jeans'">Jeans</button>
+            <button onclick="location.href='#tshirts'">T-Shirts</button>
+            <button onclick="location.href='#perfumes'">Perfumes</button>
+            <button onclick="location.href='#sando'">Sando</button>
+            <button onclick="location.href='#toys'">Toys</button>
+        </div>
+        
+        <div style="text-align: right;">
+            <button class="add-stock" onclick="location.href='add-stock.html'">Add Stock</button>
+        </div>
+
+        <div id="jeans" class="category">
+            <h2>Jeans</h2>
+            <div class="items">
+                <div class="item" data-id="jeans1" data-price="50">
+                    <img src="img1.jpg" alt="Jeans 1">
+                    <p>Jeans 1</p>
+                    <p>Price: ₱50</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="jeans1-quantity">Quantity: </label>
+                        <select class="quantity" id="jeans1-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item"  data-id="jeans2" data-price="60">
+                    <img src="img2.jpg" alt="Jeans 2">
+                    <p>Jeans 2</p>
+                    <p>Price: ₱60</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="jeans2-quantity">Quantity: </label>
+                        <select class="quantity" id="jeans2-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="jeans3" data-price="70">
+                    <img src="img3.jpeg" alt="Jeans 3">
+                    <p>Jeans 3</p>
+                    <p>Price: ₱70</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="jeans3-quantity">Quantity: </label>
+                        <select class="quantity" id="jeans3-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="jeans4" data-price="80">
+                    <img src="img4.jpg" alt="Jeans 4">
+                    <p>Jeans 4</p>
+                    <p>Price: ₱80</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="jeans4-quantity">Quantity: </label>
+                        <select class="quantity" id="jeans4-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tshirts" class="category">
+            <h2>T-Shirts</h2>
+            <div class="items">
+                <div class="item"  data-id="tshirt1" data-price="50">
+                    <img src="img5.jpg" alt="T-Shirt 1">
+                    <p>T-Shirt 1</p>
+                    <p>Price: ₱50</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="tshirt1-quantity">Quantity: </label>
+                        <select class="quantity" id="tshirt1-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="tshirt2" data-price="60">
+                    <img src="img6.jpg" alt="T-Shirt 2">
+                    <p>T-Shirt 2</p>
+                    <p>Price: ₱60</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="tshirt2-quantity">Quantity: </label>
+                        <select class="quantity" id="tshirt2-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="tshirt3" data-price="70">
+                    <img src="img7.jpg" alt="T-Shirt 3">
+                    <p>T-Shirt 3</p>
+                    <p>Price: ₱70</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="tshirt3-quantity">Quantity: </label>
+                        <select class="quantity" id="tshirt3-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="tshirt4" data-price="80">
+                    <img src="img8.jpg" alt="T-Shirt 4">
+                    <p>T-Shirt 4</p>
+                    <p>Price: ₱80</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="tshirt4-quantity">Quantity: </label>
+                        <select class="quantity" id="tshirt4-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="perfumes" class="category">
+            <h2>Perfumes</h2>
+            <div class="items">
+                <div class="item" data-id="perfume1" data-price="50">
+                    <img src="img9.jpg" alt="Perfume 1">
+                    <p>Perfume 1</p>
+                    <p>Price: ₱50</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="perfume1-quantity">Quantity: </label>
+                        <select class="quantity" id="perfume1-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="perfume2" data-price="60">
+                    <img src="img10.jpg" alt="Perfume 2">
+                    <p>Perfume 2</p>
+                    <p>Price: ₱60</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="perfume2-quantity">Quantity: </label>
+                        <select class="quantity" id="perfume2-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="perfume3" data-price="70">
+                    <img src="img11.jpg" alt="Perfume 3">
+                    <p>Perfume 3</p>
+                    <p>Price: ₱70</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="perfume3-quantity">Quantity: </label>
+                        <select class="quantity" id="perfume3-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="perfume4" data-price="80">
+                    <img src="img12.jpg" alt="Perfume 4">
+                    <p>Perfume 4</p>
+                    <p>Price: ₱80</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="perfume4-quantity">Quantity: </label>
+                        <select class="quantity" id="perfume4-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="sando" class="category">
+            <h2>Sando</h2>
+            <div class="items">
+                <div class="item" data-id="sando1" data-price="50">
+                    <img src="img13.jpg" alt="Sando 1">
+                    <p>Sando 1</p>
+                    <p>Price: ₱50</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="sando1-quantity">Quantity: </label>
+                        <select class="quantity" id="sando1-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="sando2" data-price="60">
+                    <img src="img14.jpg" alt="Sando 2">
+                    <p>Sando 2</p>
+                    <p>Price: ₱60</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="sando2-quantity">Quantity: </label>
+                        <select class="quantity" id="sando2-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="sando3" data-price="70">
+                    <img src="img15.jpg" alt="Sando 3">
+                    <p>Sando 3</p>
+                    <p>Price: ₱70</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="sando3-quantity">Quantity: </label>
+                        <select class="quantity" id="sando3-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="sando4" data-price="80">
+                    <img src="img16.jpg" alt="Sando 4">
+                    <p>Sando 4</p>
+                    <p>Price: ₱80</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="sando4-quantity">Quantity: </label>
+                        <select class="quantity" id="sando4-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="toys" class="category">
+            <h2>Denims</h2>
+            <div class="items">
+                <div class="item" data-id="denim1" data-price="50">
+                    <img src="img17.jpg" alt="Denim 1">
+                    <p>Denim 1</p>
+                    <p>Price: ₱50</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="denim1-quantity">Quantity: </label>
+                        <select class="quantity" id="denim1-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="denim2" data-price="60">
+                    <img src="img18.jpg" alt="Denim 2">
+                    <p>Denim 2</p>
+                    <p>Price: ₱60</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="denim2-quantity">Quantity: </label>
+                        <select class="quantity" id="denim2-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="denim3" data-price="70">
+                    <img src="img19.jpg" alt="Denim 3">
+                    <p>Denim 3</p>
+                    <p>Price: ₱70</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="denim3-quantity">Quantity: </label>
+                        <select class="quantity" id="denim3-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item" data-id="denim4" data-price="80">
+                    <img src="img20.jpg" alt="Denim 4">
+                    <p>Denim 4</p>
+                    <p>Price: ₱80</p>
+                    <p>Stock: <span class="stock">0</span></p>
+                    <div class="stock-quantity">
+                        <label for="denim4-quantity">Quantity: </label>
+                        <select class="quantity" id="denim4-quantity">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+		
+		
+		
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <p>Total Quantity: <span id="total-quantity">0</span></p>
+            <p>Total Price: ₱<span id="total-price">0.00</span></p>
+            <div class="discount-select">
+                <label for="discount">Discount:</label>
+                <select id="discount">
+                    <option value="0">0% NONE</option>
+                    <option value="0.1">10% STUDENT</option>
+                    <option value="0.2">20% SENIOR</option>
+					<option value="0.3">30% PWD</option>
+                </select>
+            </div>
+            <p>Discount Amount: ₱<span id="discount-amount">0.00</span></p>
+            <p>Final Total: ₱<span id="final-total">0.00</span></p>
+            <button class="place-order">Place Order</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const totalQuantityElem = document.getElementById('total-quantity');
+            const totalPriceElem = document.getElementById('total-price');
+            const discountSelect = document.getElementById('discount');
+            const discountAmountElem = document.getElementById('discount-amount');
+            const finalTotalElem = document.getElementById('final-total');
+
+            let totalQuantity = 0;
+            let totalPrice = 0;
+
+            // Fetch stock data from local storage
+            let stockData = JSON.parse(localStorage.getItem('stockData')) || {};
+
+            // Update the displayed stock
+            const items = document.querySelectorAll('.item');
+            items.forEach(item => {
+                const itemId = item.dataset.id;
+                const stockElem = item.querySelector('.stock');
+                stockElem.textContent = stockData[itemId] || 0;
+            });
+
+            function updateOrderSummary() {
+                const discountRate = parseFloat(discountSelect.value);
+                const discountAmount = totalPrice * discountRate;
+                const finalTotal = totalPrice - discountAmount;
+
+                totalQuantityElem.textContent = totalQuantity;
+                totalPriceElem.textContent = totalPrice.toFixed(2);
+                discountAmountElem.textContent = discountAmount.toFixed(2);
+                finalTotalElem.textContent = finalTotal.toFixed(2);
+            }
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const item = button.closest('.item');
+                    const itemId = item.dataset.id;
+                    const stock = parseInt(item.querySelector('.stock').textContent);
+                    const price = parseFloat(item.dataset.price);
+                    const quantitySelect = item.querySelector('.quantity');
+                    const quantity = parseInt(quantitySelect.value);
+
+                    if (quantity <= stock) {
+                        totalQuantity += quantity;
+                        totalPrice += price * quantity;
+                        stockData[itemId] = stock - quantity;
+                        item.querySelector('.stock').textContent = stockData[itemId];
+                        localStorage.setItem('stockData', JSON.stringify(stockData));
+                        updateOrderSummary();
+                    } else {
+                        alert('Insufficient stock!');
+                    }
+                });
+            });
+
+            discountSelect.addEventListener('change', updateOrderSummary);
+        });
+    </script>
+</body>
+</html>
